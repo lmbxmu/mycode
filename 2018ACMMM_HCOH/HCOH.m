@@ -1,19 +1,4 @@
 classdef HCOH
-% Training routine for AdaptHash method
-%
-% INPUTS
-% 	Xtrain - (float) n x d matrix where n is number of points 
-%       	         and d is the dimensionality 
-%
-% 	Ytrain - (int)   n x l matrix containing labels, for unsupervised datasets
-%
-% NOTES
-%       Adapted from original AdaptHash implementation
-% 	W is d x b where d is the dimensionality 
-%       b is the bit length
-%
-% 	Data arrives in pairs. If number_iterations is 1000, then 
-% 	2000 points will be processed
 
 properties
     stepsize
