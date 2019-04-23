@@ -1,6 +1,6 @@
 # Towards Optimal Discrete Online Hashing with Balanced Similarity
 
-This code is for our AAAI2019 paper, i.e., Towards Optimal Discrete Online Hashing with Balanced Similarity.
+This code is for our AAAI2019 paper, i.e., <a href ="https://arxiv.org/abs/1901.10185">Towards Optimal Discrete Online Hashing with Balanced Similarity</a>.
 
 The current code is kind of messy since I haven't got enough time to re-write it.
 
