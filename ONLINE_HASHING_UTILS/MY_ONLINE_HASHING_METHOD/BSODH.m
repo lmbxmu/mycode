@@ -9,9 +9,9 @@ normalizeX = 1;
 DS = Datasets.cifar(opts, normalizeX);
 %DS = Datasets.mnist(opts, normalizeX);
 
-trainCNN = DS.Xtrain; % n x  d
+trainCNN = DS.Xtrain;  % n x  d
 testCNN = DS.Xtest;
-trainLabels = DS.Ytrain; %  n x d
+trainLabels = DS.Ytrain;  %  n x d
 testLabels = DS.Ytest;
 
 % mapped into a sphere space
@@ -136,62 +136,62 @@ Htest = single(W_t' * test > 0);
 Aff = affinity([], [], trainLabel, testLabel, opts);
 
 opts.metric = 'mAP';
-res = evaluate(Htrain, Htest, opts, Aff);
+res = evaluate(Htrain', Htest', opts, Aff);
 
 opts.metric = 'mAP_';
 opts.mAP = 1000;
-res = evaluate(Htrain, Htest, opts, Aff);
+res = evaluate(Htrain', Htest', opts, Aff);
 
 opts.metric = 'prec_n2';
 opts.prec_n = 2;
-res = evaluate(Htrain, Htest, opts, Aff);
+res = evaluate(Htrain', Htest', opts, Aff);
 
 opts.metric = 'prec_k1';
 opts.prec_k = 1;
-res = evaluate(Htrain, Htest, opts, Aff);
+res = evaluate(Htrain', Htest', opts, Aff);
 
 opts.metric = 'prec_k1';
 opts.prec_k = 5;
-res = evaluate(Htrain, Htest, opts, Aff);
+res = evaluate(Htrain', Htest', opts, Aff);
 
 opts.metric = 'prec_k1';
 opts.prec_k = 10;
-res = evaluate(Htrain, Htest, opts, Aff);
+res = evaluate(Htrain', Htest', opts, Aff);
 
 opts.metric = 'prec_k1';
 opts.prec_k = 20;
-res = evaluate(Htrain, Htest, opts, Aff);
+res = evaluate(Htrain', Htest', opts, Aff);
 
 opts.metric = 'prec_k1';
 opts.prec_k = 30;
-res = evaluate(Htrain, Htest, opts, Aff);
+res = evaluate(Htrain', Htest', opts, Aff);
 
 opts.metric = 'prec_k1';
 opts.prec_k = 40;
-res = evaluate(Htrain, Htest, opts, Aff);
+res = evaluate(Htrain', Htest', opts, Aff);
 
 opts.metric = 'prec_k1';
 opts.prec_k = 50;
-res = evaluate(Htrain, Htest, opts, Aff);
+res = evaluate(Htrain', Htest', opts, Aff);
 
 opts.metric = 'prec_k1';
 opts.prec_k = 60;
-res = evaluate(Htrain, Htest, opts, Aff);
+res = evaluate(Htrain', Htest', opts, Aff);
 
 opts.metric = 'prec_k1';
 opts.prec_k = 70;
-res = evaluate(Htrain, Htest, opts, Aff);
+res = evaluate(Htrain', Htest', opts, Aff);
 
 opts.metric = 'prec_k1';
 opts.prec_k = 80;
-res = evaluate(Htrain, Htest, opts, Aff);
+res = evaluate(Htrain', Htest', opts, Aff);
 
 opts.metric = 'prec_k1';
 opts.prec_k = 90;
-res = evaluate(Htrain, Htest, opts, Aff);
+res = evaluate(Htrain', Htest', opts, Aff);
 
 opts.metric = 'prec_k1';
 opts.prec_k = 100;
-res = evaluate(Htrain, Htest, opts, Aff);
+res = evaluate(Htrain', Htest', opts, Aff);
 
 clear;
