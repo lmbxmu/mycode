@@ -10,7 +10,7 @@
 
 **Running Steps**:
 
-First, run **./data/download_data.sh** to download the datasets.
+First, run **./data/download_data.sh** to download the datasets of CIFAR10-VGG16-fc7, ImageNet-VGG, LabelMe-GIST and Places205_AlexNet_fc7_PCA128. Click <a href="https://pan.baidu.com/s/1xzAnBiNX5brbF1vTFFteaA">here</a>(password:e0rn) to download MNIST-pixel dataset.
 
 Second, run **startup.m**.
 
