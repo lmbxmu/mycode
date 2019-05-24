@@ -1,7 +1,6 @@
 clear;
 opts.dirs.data = '/home/lmb/source/hash_baseline/mihash-master/data';
 opts.unsupervised = 0;
-opts.metric = 'mAP';
 opts.nbits = 32;
 normalizeX = 1;
 
@@ -136,7 +135,64 @@ Htest = single(W_t' * test > 0);
 
 Aff = affinity([], [], trainLabel, testLabel, opts);
 
-res = evaluate(Htrain', Htest', opts, Aff);
+opts.metric = 'mAP';
+res = evaluate(Htrain, Htest, opts, Aff);
+
+opts.metric = 'mAP_';
+opts.mAP = 1000;
+res = evaluate(Htrain, Htest, opts, Aff);
+
+opts.metric = 'prec_n2';
+opts.prec_n = 2;
+res = evaluate(Htrain, Htest, opts, Aff);
+
+opts.metric = 'prec_k1';
+opts.prec_k = 1;
+res = evaluate(Htrain, Htest, opts, Aff);
+
+opts.metric = 'prec_k1';
+opts.prec_k = 5;
+res = evaluate(Htrain, Htest, opts, Aff);
+
+opts.metric = 'prec_k1';
+opts.prec_k = 10;
+res = evaluate(Htrain, Htest, opts, Aff);
+
+opts.metric = 'prec_k1';
+opts.prec_k = 20;
+res = evaluate(Htrain, Htest, opts, Aff);
+
+opts.metric = 'prec_k1';
+opts.prec_k = 30;
+res = evaluate(Htrain, Htest, opts, Aff);
+
+opts.metric = 'prec_k1';
+opts.prec_k = 40;
+res = evaluate(Htrain, Htest, opts, Aff);
+
+opts.metric = 'prec_k1';
+opts.prec_k = 50;
+res = evaluate(Htrain, Htest, opts, Aff);
+
+opts.metric = 'prec_k1';
+opts.prec_k = 60;
+res = evaluate(Htrain, Htest, opts, Aff);
+
+opts.metric = 'prec_k1';
+opts.prec_k = 70;
+res = evaluate(Htrain, Htest, opts, Aff);
+
+opts.metric = 'prec_k1';
+opts.prec_k = 80;
+res = evaluate(Htrain, Htest, opts, Aff);
+
+opts.metric = 'prec_k1';
+opts.prec_k = 90;
+res = evaluate(Htrain, Htest, opts, Aff);
+
+opts.metric = 'prec_k1';
+opts.prec_k = 100;
+res = evaluate(Htrain, Htest, opts, Aff);
 
 clear;
 
