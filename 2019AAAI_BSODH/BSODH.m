@@ -9,9 +9,9 @@ normalizeX = 1;
 DS = Datasets.cifar(opts, normalizeX);
 %DS = Datasets.mnist(opts, normalizeX);
 
-trainCNN = DS.Xtrain; % n x  d
+trainCNN = DS.Xtrain;  % n x  d
 testCNN = DS.Xtest;
-trainLabels = DS.Ytrain; %  n x d
+trainLabels = DS.Ytrain;  %  n x d
 testLabels = DS.Ytest;
 
 % mapped into a sphere space
