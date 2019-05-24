@@ -1,4 +1,4 @@
-**Noticeably**, the tools of util, vlfeat, affinity.m evaluate.m and startup.m come from <a href="https://github.com/fcakir/mihash">here</a> and we highly appreciate the authors' contributions.
+**Noticeably**, the tools of util, vlfeat, affinity.m, evaluate.m and startup.m come from <a href="https://github.com/fcakir/mihash">here</a> and we highly appreciate the authors' contributions.
 
 **The followings are our contribution**
 
