@@ -1,5 +1,5 @@
 clear;
-opts.dirs.data = '/home/lmb/source/hash_baseline/mihash-master/data';
+opts.dirs.data = '../data';
 opts.unsupervised = 0;
 opts.nbits = 32;
 normalizeX = 1;
