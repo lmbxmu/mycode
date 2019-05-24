@@ -4,4 +4,4 @@ MY_ONLINE_HASHING_METHOD directory contains our online hashing methods, includin
 
 (2) BSODH.m  ==> <a href ="https://arxiv.org/abs/1901.10185">Towards Optimal Discrete Online Hashing with Balanced Similarity </a>, AAAI 2019.
 
-Run ../startup.m before running our source codes.
+Run startup.m before running our source codes.
