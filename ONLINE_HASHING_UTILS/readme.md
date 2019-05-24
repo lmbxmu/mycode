@@ -12,6 +12,8 @@
 
 First, run **./data/download_data.sh** to download the datasets of CIFAR10-VGG16-fc7, ImageNet-VGG, LabelMe-GIST and Places205_AlexNet_fc7_PCA128. Click <a href="https://pan.baidu.com/s/1xzAnBiNX5brbF1vTFFteaA">here</a> ( password: e0rn ) to download the MNIST dataset. Click <a href="https://pan.baidu.com/s/1SSRtgLNR9L_YcO4duLAfGg">here</a> ( password: rwkm ) to download the NUS-WIDE dataset.
 
-Second, run **startup.m**.
+Second, put all downloaded datasets into **./data** directory.
 
-Third, run **our source codes**.
+Third, run **startup.m**.
+
+Fourth, run **our source codes**.
