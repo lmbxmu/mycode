@@ -33,7 +33,6 @@ train = train';
 W_t = randn(Dtest, opts.nbits);
 W_t = W_t ./ repmat(diag(sqrt(W_t' * W_t))', Dtest, 1);
 
-
 %%%%%%%%%%%% Four parameters depicted in the paper %%%%%%%%%%%%%%%%
 lambda = 0.3;   %  0.6 for CIFAR-10, 0.3 for MNIST, 0.9 for Places205
 sigma = 0.5;    %  0.5 for CIFAR-10, 0.5 for MNIST, 0.8 for Places205
