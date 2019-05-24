@@ -1,7 +1,6 @@
 clear;
 opts.dirs.data = '../data';
 opts.unsupervised = 0;
-opts.metric = 'mAP';
 opts.nbits = 32;
 normalizeX = 1;
 
@@ -36,13 +35,13 @@ W_t = W_t ./ repmat(diag(sqrt(W_t' * W_t))', Dtest, 1);
 
 
 %%%%%%%%%%%% Four parameters depicted in the paper %%%%%%%%%%%%%%%%
-lambda = 0.3;
-sigma = 0.5;
-etad = 0.2;
-etas = 1.2;
+lambda = 0.3;   %  0.6 for CIFAR-10, 0.3 for MNIST, 0.9 for Places205
+sigma = 0.5;    %  0.5 for CIFAR-10, 0.5 for MNIST, 0.8 for Places205
+etad = 0.2;     %  0.2 for CIFAR-10 and MNIST, 0 for Places205
+etas = 1.2;     %  1.2 for CIFAR-10 and MNIST, 1 for Places205
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-n_t = 2000;              % training size at each stage
-training_size = 20000;   % total training instances
+n_t = 2000;     % training size at each stage       % 2K for CIFAR-10 and MNIST, 10K for Places205
+training_size = 20000;   % total training instances % 20K for CIFAR-10 and MNIST, 100K for Places205
 
 
 Xs_t = [];
@@ -136,6 +135,63 @@ Htest = single(W_t' * test > 0);
 
 Aff = affinity([], [], trainLabel, testLabel, opts);
 
-res = evaluate(Htrain', Htest', opts, Aff);
+opts.metric = 'mAP';
+res = evaluate(Htrain, Htest, opts, Aff);
+
+opts.metric = 'mAP_';
+opts.mAP = 1000;
+res = evaluate(Htrain, Htest, opts, Aff);
+
+opts.metric = 'prec_n2';
+opts.prec_n = 2;
+res = evaluate(Htrain, Htest, opts, Aff);
+
+opts.metric = 'prec_k1';
+opts.prec_k = 1;
+res = evaluate(Htrain, Htest, opts, Aff);
+
+opts.metric = 'prec_k1';
+opts.prec_k = 5;
+res = evaluate(Htrain, Htest, opts, Aff);
+
+opts.metric = 'prec_k1';
+opts.prec_k = 10;
+res = evaluate(Htrain, Htest, opts, Aff);
+
+opts.metric = 'prec_k1';
+opts.prec_k = 20;
+res = evaluate(Htrain, Htest, opts, Aff);
+
+opts.metric = 'prec_k1';
+opts.prec_k = 30;
+res = evaluate(Htrain, Htest, opts, Aff);
+
+opts.metric = 'prec_k1';
+opts.prec_k = 40;
+res = evaluate(Htrain, Htest, opts, Aff);
+
+opts.metric = 'prec_k1';
+opts.prec_k = 50;
+res = evaluate(Htrain, Htest, opts, Aff);
+
+opts.metric = 'prec_k1';
+opts.prec_k = 60;
+res = evaluate(Htrain, Htest, opts, Aff);
+
+opts.metric = 'prec_k1';
+opts.prec_k = 70;
+res = evaluate(Htrain, Htest, opts, Aff);
+
+opts.metric = 'prec_k1';
+opts.prec_k = 80;
+res = evaluate(Htrain, Htest, opts, Aff);
+
+opts.metric = 'prec_k1';
+opts.prec_k = 90;
+res = evaluate(Htrain, Htest, opts, Aff);
+
+opts.metric = 'prec_k1';
+opts.prec_k = 100;
+res = evaluate(Htrain, Htest, opts, Aff);
 
 clear;
