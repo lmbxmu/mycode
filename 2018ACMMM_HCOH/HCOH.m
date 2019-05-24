@@ -1,69 +1,124 @@
-classdef HCOH
+clear;
+opts.dirs.data = '/home/lmb/source/hash_baseline/mihash-master/data'
+opts.unsupervised = 0;
+opts.nbits = 32;
+hbits = 32; %  the length of Hadamard codebook. It has to be min{2^k, unique(train_label)}.
+normalizeX = 1; 
 
-properties
-    stepsize
-    hadamard
-    batchSize
-    lambda
-    h
-    hbit
-    train_label
+%DS = Datasets.places(opts, normalizeX);
+DS = Datasets.cifar(opts, normalizeX);
+%DS = Datasets.mnist(opts, normalizeX);
+
+trainCNN = DS.Xtrain;    % n x d
+testCNN = DS.Xtest;      % n x d
+trainlabel = DS.Ytrain;
+testlabel = DS.Ytest;
+
+
+[Ntrain, Dtrain] = size(trainCNN);
+[Ntest, Dtest] = size(testCNN);
+
+
+h = hadamard(hbits);      % Hadamard Matrix
+h = h(randperm(hbits), :);
+
+train_label = h(trainlabel, :);  % assign Hadamard codebook based on the label.
+
+% mapping the length of Hadamard codebook to the code length.
+lshW = randn(hbits, opts.nbits);
+lshW = lshW ./ repmat(diag(sqrt(lshW'*lshW))', hbits, 1);
+% hash weight
+W = randn(Dtrain, opts.nbits);
+W = W ./ repmat(diag(sqrt(W'* W))', Dtrain, 1);
+
+
+%%%%%%%%%%%%%%%Parameter used in the paper%%%%%%%%%%%%%%%%%%%%
+n_t = 1;    % training size at each stage   % 1 for CIFAR-10, MNIST and Places205
+eta = 0.2;  % learning rate                 % 0.2 for CIFAR-10 and MNIST, 0.1 for Places205
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+training_size = 20000;   % total training instances % 20K for CIFAR-10 and MNIST, 100K for Places205
+
+
+tic
+for t = 1:n_t:training_size
+    B = train_label(t:(t+n_t-1), :);
+    X = trainCNN(t:(t+n_t-1), :);
+    if hbits ~= opts.nbits
+        B = single(B * lshW > 0);
+        B(B<=0) = -1;
+    end
+
+    F = tanh(X*W);
+    der = eta * X' * [(F - B) .* (1 - F.*F)] / n_t;
+    W = W - der;
 end
-
-methods
-    function [W, R, obj] = init(obj, R, X, Y, opts)
-
-        obj.stepsize       = opts.stepsize;
-        obj.hbit        = opts.hbit;
-        obj.batchSize   = opts.batchSize;
-        obj.lambda = opts.lambda;
-        
-        h = hadamard(obj.hbit);
-        obj.h = h(randperm(obj.hbit), :);
-        cnum = length(unique(Y));
-        
-        % LSH init
-        [n, d] = size(X);
-        W = randn(d, opts.nbits);
-        W = W ./ repmat(diag(sqrt(W'*W))',d,1);
-        
-        lshW = randn(obj.hbit, opts.nbits); 
-        lshW = lshW ./ repmat(diag(sqrt(W'*W))', obj.hbit, 1);
-        lshW = orth(obj.hbit) * lshW;
-        if obj.hbit ~= opts.nbits
-            obj.h = single(h * lshW > 0);
-            obj.h(obj.h <= 0) = -1;
-        end
-        obj.train_label = obj.h(1:cnum,:);
-        % lshW = lshW * orth(opts.nbits);
-        
-    end % init
+toc
 
 
-    function [W, sampleIdx] = train1batch(obj, W, R, X, Y, I, t, opts)
-        [n, d] = size(X);
-  %      sampleIdx = I(t:(t:+obj.batchSize-1));
-        sampleIdx = t:(t+obj.batchSize-1);
-        Xsample = X(sampleIdx, :);
-        Ysample = Y(sampleIdx);
-        
-        target = obj.train_label(Ysample, :);
-        
-        F = tanh(Xsample * W);
-        derivative = obj.stepsize * Xsample' * [(F-target).*(1-F.*F)] + obj.lambda*W;
-        W = W - derivative / obj.batchSize;
+Htrain = single(trainCNN * W > 0);
 
-    end % train1batch
+Htest = single(testCNN * W > 0);
 
+Aff = affinity([], [], trainlabel, testlabel, opts);
 
-    function H = encode(obj, W, X, isTest)
-        H = (X * W) > 0;
-    end
+opts.metric = 'mAP';
+res = evaluate(Htrain, Htest, opts, Aff);
 
-    function P = get_params(obj)
-        P = [];
-    end
+opts.metric = 'mAP_';
+opts.mAP = 1000;
+res = evaluate(Htrain, Htest, opts, Aff);
 
-end % methods
+opts.metric = 'prec_n2';
+opts.prec_n = 2;
+res = evaluate(Htrain, Htest, opts, Aff);
 
-end % classdef
+opts.metric = 'prec_k1';
+opts.prec_k = 1;
+res = evaluate(Htrain, Htest, opts, Aff);
+
+opts.metric = 'prec_k1';
+opts.prec_k = 5;
+res = evaluate(Htrain, Htest, opts, Aff);
+
+opts.metric = 'prec_k1';
+opts.prec_k = 10;
+res = evaluate(Htrain, Htest, opts, Aff);
+
+opts.metric = 'prec_k1';
+opts.prec_k = 20;
+res = evaluate(Htrain, Htest, opts, Aff);
+
+opts.metric = 'prec_k1';
+opts.prec_k = 30;
+res = evaluate(Htrain, Htest, opts, Aff);
+
+opts.metric = 'prec_k1';
+opts.prec_k = 40;
+res = evaluate(Htrain, Htest, opts, Aff);
+
+opts.metric = 'prec_k1';
+opts.prec_k = 50;
+res = evaluate(Htrain, Htest, opts, Aff);
+
+opts.metric = 'prec_k1';
+opts.prec_k = 60;
+res = evaluate(Htrain, Htest, opts, Aff);
+
+opts.metric = 'prec_k1';
+opts.prec_k = 70;
+res = evaluate(Htrain, Htest, opts, Aff);
+
+opts.metric = 'prec_k1';
+opts.prec_k = 80;
+res = evaluate(Htrain, Htest, opts, Aff);
+
+opts.metric = 'prec_k1';
+opts.prec_k = 90;
+res = evaluate(Htrain, Htest, opts, Aff);
+
+opts.metric = 'prec_k1';
+opts.prec_k = 100;
+res = evaluate(Htrain, Htest, opts, Aff);
+
+clear;
