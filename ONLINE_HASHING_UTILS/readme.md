@@ -12,6 +12,6 @@
 
 First, run **./data/download_data.sh** to download the datasets.
 
-Second, run **startup.m**
+Second, run **startup.m**.
 
 Third, run **our source codes**.
