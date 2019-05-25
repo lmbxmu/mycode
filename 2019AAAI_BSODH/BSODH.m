@@ -35,12 +35,12 @@ train = train';
 W_t = randn(Dtest, opts.nbits);
 W_t = W_t ./ repmat(diag(sqrt(W_t' * W_t))', Dtest, 1);
 
-%%%%%%%%%%%% Four parameters depicted in the paper %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%% Four parameters depicted in the paper %%%%%%%%%%%%%%%%%%
 lambda = 0.3;   %  0.6 for CIFAR-10, 0.3 for MNIST, 0.9 for Places205
 sigma = 0.5;    %  0.5 for CIFAR-10, 0.5 for MNIST, 0.8 for Places205
 etad = 0.2;     %  0.2 for CIFAR-10 and MNIST, 0 for Places205
 etas = 1.2;     %  1.2 for CIFAR-10 and MNIST, 1 for Places205
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 n_t = 2000;     % training size at each stage       % 2K for CIFAR-10 and MNIST, 10K for Places205
 training_size = 20000;   % total training instances % 20K for CIFAR-10 and MNIST, 100K for Places205
 
