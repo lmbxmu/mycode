@@ -1,3 +1,5 @@
+% Supervised Online Hashing via Hadamard Codebook Learning, ACM MM 2018.
+
 clear;
 opts.dirs.data = '../data'
 opts.unsupervised = 0;
