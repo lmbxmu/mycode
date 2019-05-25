@@ -34,10 +34,10 @@ W = randn(Dtrain, opts.nbits);
 W = W ./ repmat(diag(sqrt(W'* W))', Dtrain, 1);
 
 
-%%%%%%%%%%%%%%%Parameter used in the paper%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%Parameter used in the paper%%%%%%%%%%%%%%%%%%%%%
 n_t = 1;    % training size at each stage   % 1 for CIFAR-10, MNIST and Places205
 eta = 0.2;  % learning rate                 % 0.2 for CIFAR-10 and MNIST, 0.1 for Places205
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 training_size = 20000;   % total training instances % 20K for CIFAR-10 and MNIST, 100K for Places205
 
