@@ -1,3 +1,5 @@
+% Towards Optimal Discrete Online Hashing with Balanced Similarity, AAAI 2019.
+
 clear;
 opts.dirs.data = '../data';
 opts.unsupervised = 0;
