@@ -101,6 +101,13 @@ for t = n_t:n_t:training_size
 
     tag = 1;
 
+% Note that, the updating order of Bs, Be and W here is not consistent with the Algorithm. 1 in the paper.
+% Based on my experience, I didn't find much influence on the experimental results (At least on CIFAR-10, MNIST and Places205 I have tried.).
+% However, some friends found that it did have great impacts on other datasets, e.g., NUS-WIDE.
+% I'm sorry about this. 
+% If necessary, please change the updating order as described in the paper. (May get a much better result.)
+% Enjoy your research, friends.
+
     % update Bs
     P = opts.nbits * Be_t * S_t' + W_t' * Xs_t;
     for r = 1:opts.nbits
