@@ -176,6 +176,6 @@ for i = 1:length(bit)
     
     opts.metric = 'prec_n2';
     opts.prec_n = 2;
-%    res = evaluate(TRAIN, TEST, opts, Aff);  
+    res = evaluate(TRAIN, TEST, opts, Aff);  
     
 end
