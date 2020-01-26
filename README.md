@@ -4,6 +4,6 @@
 
 **2019ACMMM_BSODH** directory contains the source codes of our paper, i.e., <a href ="https://arxiv.org/abs/1901.10185">Towards Optimal Discrete Online Hashing with Balanced Similarity </a>, AAAI 2019.
 
-**2020IJCV_HMOH** directory contains the source codes of our paper, i.e. <a href ="https://arxiv.org/abs/1905.04454">Hadamard Matrix Guided Online Hashing </a>, IJCV 2020 (Under Review).
+**2020IJCV_HMOH** directory contains the source codes of our paper, i.e., <a href ="https://arxiv.org/abs/1905.04454">Hadamard Matrix Guided Online Hashing </a>, IJCV 2020 (Under Review).
 
 Feel free to contact me at lmbxmu@stu.xmu.edu.cn
