@@ -10,6 +10,8 @@
 
 (3) **HMOH.m**  ==> <a href ="https://arxiv.org/abs/1905.04454">Hadamard Matrix Guided Online Hashing </a>, IJCV 2020 (Under Review).
 
+**HMOH shows the best performance and is encouraged to compare.**
+
 **Running Steps**:
 
 First, run **./data/download_data.sh** to download the datasets of CIFAR10-VGG16-fc7, ImageNet-VGG, LabelMe-GIST and Places205_AlexNet_fc7_PCA128. Click <a href="https://pan.baidu.com/s/1xzAnBiNX5brbF1vTFFteaA">here</a> ( password: e0rn ) to download the MNIST dataset. Click <a href="https://pan.baidu.com/s/1SSRtgLNR9L_YcO4duLAfGg">here</a> ( password: rwkm ) to download the NUS-WIDE dataset.
