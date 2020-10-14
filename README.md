@@ -1,3 +1,5 @@
+![]( https://visitor-badge.glitch.me/badge?page_id=lmbxmu.onlinehashing)
+
 **ONLINE_HASHING_UTILS** directory contains all baseline methods and online hashing tools.
 
 **2018ACMMM_HCOH** directory contains the source codes of our paper, i.e., <a href="https://dl.acm.org/citation.cfm?id=3240519">Supervised Online Hashing via Hadamard Codebook Learning </a>, ACM MM, 2018. 
