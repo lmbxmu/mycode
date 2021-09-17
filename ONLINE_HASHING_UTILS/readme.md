@@ -8,7 +8,7 @@
 
 (2) **BSODH.m**  ==> <a href ="https://arxiv.org/abs/1901.10185">Towards Optimal Discrete Online Hashing with Balanced Similarity </a>, AAAI 2019.
 
-(3) **HMOH.m**  ==> <a href ="https://arxiv.org/abs/1905.04454">Hadamard Matrix Guided Online Hashing </a>, IJCV 2020 (Under Review).
+(3) **HMOH.m**  ==> <a href ="https://arxiv.org/abs/1905.04454">Hadamard Matrix Guided Online Hashing </a>, IJCV 2020.
 
 **HMOH shows the best performance and is encouraged to compare.**
 
